@@ -1,0 +1,16 @@
+<!-- app/views/tasks/_form.html.erb -->
+<%= form_with model: task, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :details %>
+    <%= f.text_area :details, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit task.persisted? ? "Update Task" : "Create Task", class: "btn btn-primary" %>
+  </div>
+<% end %>
