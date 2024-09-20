@@ -1,6 +1,30 @@
-<!-- app/views/tasks/edit.html.erb -->
-<h1>Edit Task</h1>
+<div class="container mt-5">
+  <!-- heading for the edit task form -->
+  <h1>Edit Task</h1>
 
-<%= render "form", task: @task %>
+  <%= form_with model: @task, local: true do |f| %>
+    <!-- input for the task title -->
+    <div class="mb-3">
+      <%= f.label :title, class: "form-label" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
 
-<a href="/tasks">Back to tasks</a>
+    <!-- textarea for the task details -->
+    <div class="mb-3">
+      <%= f.label :details, class: "form-label" %>
+      <%= f.text_area :details, class: "form-control" %>
+    </div>
+
+    <!-- checkbox for marking the task as completed -->
+    <div class="mb-3 form-check">
+      <%= f.label :completed, class: "form-check-label" %>
+      <%= f.check_box :completed, class: "form-check-input" %>
+    </div>
+
+    <!-- submit button to update the task -->
+    <%= f.submit "Update Task", class: "btn btn-primary" %>
+  <% end %>
+
+  <!-- back link to navigate to the tasks list -->
+  <a href="/tasks" class="btn btn-link mt-3">Back to tasks</a>
+</div>

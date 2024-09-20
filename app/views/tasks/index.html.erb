@@ -1,13 +1,30 @@
-<!-- app/views/tasks/index.html.erb -->
-<h1>All Tasks</h1>
+<div class="container mt-5">
+  <!-- heading for the tasks list -->
+  <h1 class="mb-4">All Tasks</h1>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= link_to task.title, task_path(task) %> - <%= task.details %>
-      <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-    </li>
-  <% end %>
-</ul>
+  <!-- list group for all tasks -->
+  <ul class="list-group mb-4">
+    <% @tasks.each do |task| %>
+      <!-- each task item with title and details -->
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <!-- link to task details page -->
+          <%= link_to task.title, task_path(task), class: "text-decoration-none" %> - <%= task.details %>
+        </div>
+        <div>
+          <!-- edit button with an edit icon -->
+          <%= link_to edit_task_path(task), class: "btn btn-sm btn-secondary me-2" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <!-- delete button with a trash icon -->
+          <a href="#" class="btn btn-sm btn-danger delete-task" data-id="<%= task.id %>">
+            <i class="fas fa-trash-alt"></i>
+          </a>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 
-<a href="/tasks/new" class="btn btn-primary">Add a new task</a>
+  <!-- link to add a new task -->
+  <a href="/tasks/new" class="btn btn-primary">Add a new task</a>
+</div>

@@ -1,6 +1,31 @@
-<!-- app/views/tasks/show.html.erb -->
-<h1><%= @task.title %></h1>
-<p><%= @task.details %></p>
-<p><strong>Completed:</strong> <%= @task.completed ? "Yes" : "No" %></p>
+<div class="container mt-5">
+  <!-- heading for the task details -->
+  <h1 class="mb-4">Task Details</h1>
 
-<a href="/tasks">Back to tasks</a>
+  <!-- card for displaying task information -->
+  <div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <!-- task title -->
+      <h2 class="mb-0"><%= @task.title %></h2>
+      <div>
+        <!-- edit button with an edit icon -->
+        <%= link_to edit_task_path(@task), class: "btn btn-sm btn-secondary me-2" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+        <!-- delete button with a trash icon -->
+        <a href="#" class="btn btn-sm btn-danger delete-task" data-id="<%= @task.id %>">
+          <i class="fas fa-trash-alt"></i>
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <!-- task details -->
+      <p class="mb-2"><strong>Details:</strong> <%= @task.details %></p>
+      <!-- task completion status -->
+      <p><strong>Completed:</strong> <%= @task.completed ? "Yes" : "No" %></p>
+    </div>
+  </div>
+
+  <!-- link back to the task list -->
+  <a href="<%= tasks_path %>" class="btn btn-primary">Back to Task List</a>
+</div>

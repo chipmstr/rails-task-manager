@@ -1,16 +1,26 @@
-<!-- app/views/tasks/_form.html.erb -->
 <%= form_with model: task, local: true do |f| %>
   <div class="form-group">
+    <!-- label and input field for the task title -->
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
 
   <div class="form-group">
+    <!-- label and text area for the task details -->
     <%= f.label :details %>
     <%= f.text_area :details, class: "form-control" %>
   </div>
 
-  <div class="form-group">
+  <% if task.persisted? %>
+    <div class="form-group form-check">
+      <!-- checkbox to mark the task as completed (only if task exists already) -->
+      <%= f.label :completed, class: "form-check-label" %>
+      <%= f.check_box :completed, class: "form-check-input" %>
+    </div>
+  <% end %>
+
+  <div class="form-group mt-4">
+    <!-- submit button (text depends on whether it's an update or create action) -->
     <%= f.submit task.persisted? ? "Update Task" : "Create Task", class: "btn btn-primary" %>
   </div>
 <% end %>

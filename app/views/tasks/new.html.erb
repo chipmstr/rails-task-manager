@@ -1,6 +1,14 @@
-<!-- app/views/tasks/new.html.erb -->
-<h1>New Task</h1>
+<div class="container mt-5">
+  <!-- heading for the new task form -->
+  <h1 class="mb-4">New Task</h1>
 
-<%= render "form", task: @task %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <!-- rendering the form partial with the @task object -->
+      <%= render "form", task: @task %>
+    </div>
+  </div>
 
-<a href="/tasks">Back to tasks</a>
+  <!-- back button to navigate to the tasks list -->
+  <a href="/tasks" class="btn btn-secondary">Back to tasks</a>
+</div>
